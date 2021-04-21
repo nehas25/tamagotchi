@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <!-- jQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <script defer src="../scripts/app.js"></script>
+    <link rel="stylesheet" href="../styles/name-form.css">
+    <title>Ghosty</title>
+</head>
+<body>
+    <div class='main-container'>
+        <section>
+            <div class="ghost-container">
+                <div class="float-area">
+                    <img class="ghost" src="../resources/ghost.png" alt="ghost emoji"/>
+                </div>
+                <div class="shadow"></div>
+            </div>
+        </section>
+        <section id="name-section">
+            <form action="" id="name-form">
+                <label for="name" id="name-label">NAME YOUR PET GHOST:</label>
+                <input type="text" name="name" id="name-textbox" required="required">
+                <input type="submit" id="name-submit">
+            </form>
+        </section>
+    </div>
+</body>
+</html>
