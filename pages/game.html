@@ -11,7 +11,7 @@
     crossorigin="anonymous"></script>
     <!-- Main JS -->
     <script defer src="../scripts/app.js"></script>
-    <!-- Font -->
+    <!-- Font Family-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet"> 
     <!-- Main CSS -->
@@ -19,35 +19,47 @@
     <title>Ghosty</title>
 </head>
 <body>
-    <header>
-        <p>GHOSTGOTCHI</p>
-    </header>
-    <aside>
+    <div id="title">
+        <h1>GHOSTGOTCHI</h1>
+    </div>
+    <aside id="stats">
         <!-- Name and Age display -->
         <section class="name-section">
-            <label for="" id="name-label">Name: </label>
-            <label for="" id="name-val-label"></label>
-            <label for="" id="age-label">Age: </label>
-            <label for="" id="age-val-label"></label>
+            <div class="name-div">
+                <label for="" id="name-label">Name: </label>
+                <label for="" class="value-label" id="name-val-label"></label>
+            </div>
+            <div class="age-div">
+                <label for="" id="age-label">Age: </label>
+                <label for="" class="value-label" id="age-val-label"></label>
+            </div>
         </section>
-        <!-- Sscore display -->
+        <!-- Score display -->
         <section class="score-section">
-            <label for="" id="hunger-label">Hunger: </label>
-            <label for="" id="hunger-val-label"></label>
-            <label for="" id="sleepiness-label">Sleepiness: </label>
-            <label for="" id="sleepiness-val-label"></label>
-            <label for="" id="boredom-label">Boredom: </label>
-            <label for="" id="boredom-val-label"></label>
+            <div class="hunger-div">
+                <label for="" id="hunger-label">Hunger: </label>
+                <label for="" class="value-label" id="hunger-val-label"></label>
+            </div>
+            <div class="sleepiness-div">
+                <label for="" id="sleepiness-label">Sleepiness: </label>
+                <label for="" class="value-label" id="sleepiness-val-label"></label>
+            </div>
+            <div class="boredom-div">
+                <label for="" id="boredom-label">Boredom: </label>
+                <label for="" class="value-label" id="boredom-val-label"></label>
+            </div>
         </section>
     </aside>
-    <main>
-        <img src="" alt="">
+    <main id="main">
+        <div class="main-area">
+            <img id="ghost-img" src="../resources/ghost.png" alt="">
+        </div>
     </main>
     <!-- buttons -->
-    <section class="buttons-section">
-        <button id="play-button">Play</button>
-        <button id="feed-button">Feed</button>
-        <button id="sleep-button">Sleep</button>
+    <section id="buttons-section">
+        <button id="play-button" class="game-play-btn">Play</button>
+        <button id="feed-button" class="game-play-btn">Feed</button>
+        <button id="sleep-button" class="game-play-btn">Sleep</button>
     </section>
 </body>
 </html>

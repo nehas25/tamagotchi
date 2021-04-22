@@ -1,3 +1,75 @@
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: black;
+    font-family: 'Creepster', cursive;
+    color: #FFF;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+    border: 5px pink solid;
+}
+
+#ghost-img {
+    width: 150px;
+    height: 125px;
+}
+
+#title {
+    grid-row: 1;
+    grid-column: 1 / span 8;
+    background-color: rgb(85, 85, 85);
+    place-self: center;
+    font-size: 2em;
+}
+
+#stats {
+    grid-row: 2 / span 4;
+    grid-column: 2 / span 2;
+    background-color: skyblue;
+    font-size: 1.8em;
+    display: grid;
+}
+
+.value-label {
+    background-color: #0073ff;
+}
+
+.name-section, .score-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 0 0 10%;
+    border: 10px darkblue ridge;
+}
+
+#main {
+    grid-row: 2 / span 4;
+    grid-column: 4 / span 4;
+    background-color: goldenrod;
+    border: 5px #EF3D23  solid;
+    display: grid;
+}
+
+.main-area {
+    place-self: center;
+}
+
+#buttons-section {
+    grid-row: 6 / span 1;
+    grid-column: 2 / span 6;
+    background-color: seagreen;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.game-play-btn {
+    color: black;
+    background-color: bisque;
+    width: 20%;
+    height: 45%;
+    font-size: 2em;
 }
