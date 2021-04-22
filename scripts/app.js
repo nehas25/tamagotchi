@@ -1,14 +1,17 @@
 console.log("Hi! I am Ghosty...boo");
+let petName;
 let petGhost;
+// const pet = 'PET';
+// const petName = 'PETNAME';
 
 const boredomOutcomes = [
     {
-        scoreChange: -1, 
-        commentaary: `You tried to play fetch with your pet. It did not like it. It wants to play Haunt instead.`
+        scoreChange: -1,
+        commentaary: `Great job! Your pet is having a lot of fun!!!`
     },
     {
-        scoreChange: 1,
-        commentaary: `Great job! Your pet is having a lot of fun!!!`
+        scoreChange: 1, 
+        commentaary: `You tried to play fetch with your pet. It did not like it. It wants to play Haunt instead.`
     }
 ]
 
@@ -24,7 +27,7 @@ function updatePetBoredom(scoreChange) {
     const pet = JSON.parse(localStorage.getItem('pet'));
     pet.boredom += scoreChange;
     console.log(`Pet after score change: `, pet);
-    localStorage.setItem('pet', JSON.stringify(petGhost));
+    localStorage.setItem('pet', JSON.stringify(pet));
     return pet.boredom;
 }
 
@@ -51,6 +54,7 @@ function play() {
 // When pet's name is entered, take to game page
 $('#name-form').on('submit', function(event) {
     event.preventDefault();
+    petName = $('#name-textbox').val();
     localStorage.setItem('petName', petName);
     window.location.href = '../pages/game.html';
 });
