@@ -1,12 +1,35 @@
 console.log("Hi! I am Ghosty...boo");
 let petGhost;
 
+const boredomOutcomes = [
+    {
+        scoreChange: -1, 
+        commentaary: `You tried to play fetch with your pet. It did not like it. It wants to play Haunt instead.`
+    },
+    {
+        scoreChange: 1,
+        commentaary: `Great job! Your pet is having a lot of fun!!!`
+    }
+]
+
 $('#coffin-btn').click(function() {
     window.location.href = 'pages/name-form.html';
 });
 
 function generateRandomInRange(lowerBound, upperBound) {
     return Math.floor(Math.random()*(upperBound-lowerBound+1)) + lowerBound;
+}
+
+function updatePetBoredom(scoreChange) {
+    const pet = JSON.parse(localStorage.getItem('pet'));
+    pet.boredom += scoreChange;
+    console.log(`Pet after score change: `, pet);
+    localStorage.setItem('pet', JSON.stringify(petGhost));
+    return pet.boredom;
+}
+
+function displayNewScore(label, newVal) {
+        $(label).text(newVal);
 }
 class Pet {
     constructor(name) {
@@ -18,6 +41,13 @@ class Pet {
     }
 }
 
+function play() {
+    const boredomOutcome = boredomOutcomes[generateRandomInRange(0, boredomOutcomes.length-1)];
+    console.log(boredomOutcome);
+    const newBoredomVal = updatePetBoredom(boredomOutcome.scoreChange);
+    displayNewScore('#boredom-val-label', newBoredomVal);
+}
+
 // When pet's name is entered, take to game page
 $('#name-form').on('submit', function(event) {
     event.preventDefault();
@@ -25,11 +55,7 @@ $('#name-form').on('submit', function(event) {
     window.location.href = '../pages/game.html';
 });
 
-function createPet(petName) {
-    petGhost = new Pet(petName);
-}
-
-function displayStats() {
+function displayStats(petGhost) {
     $('#name-val-label').text(petGhost.name);
     $('#age-val-label').text(petGhost.age);
     $('#hunger-val-label').text(petGhost.hunger);
@@ -37,13 +63,19 @@ function displayStats() {
     $('#boredom-val-label').text(petGhost.boredom);
 }
 
-
 window.addEventListener("load", function(){
     if (window.location.pathname === '/pages/game.html') {
         console.log("Game loaded!");
         const petName = localStorage.getItem('petName');
         console.log(petName);
-        createPet(petName);
-        displayStats();
+        const petGhost = new Pet(petName);
+        localStorage.setItem('pet', JSON.stringify(petGhost));
+        displayStats(petGhost);
     }
+});
+
+$('#play-button').on('click', function() {
+    const pet = JSON.parse(window.localStorage.getItem('pet'));
+    console.log(pet)
+    play();
 });

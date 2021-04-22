@@ -12,7 +12,7 @@ body {
     border: 5px pink solid;
 }
 
-#ghost-img {
+#main-img {
     width: 150px;
     height: 125px;
 }
@@ -27,7 +27,7 @@ body {
 
 #stats {
     grid-row: 2 / span 4;
-    grid-column: 2 / span 2;
+    grid-column: 2 / span 1;
     background-color: skyblue;
     font-size: 1.8em;
     display: grid;
@@ -47,14 +47,28 @@ body {
 
 #main {
     grid-row: 2 / span 4;
-    grid-column: 4 / span 4;
+    grid-column: 3 / span 5;
     background-color: goldenrod;
     border: 5px #EF3D23  solid;
+    font-size: 1.5em;
+    padding: 1% 1%;
     display: grid;
+    grid-template-rows: repeat(6, 1fr);
 }
 
-.main-area {
+#main-area {
+    grid-row: 1 / span 5;
     place-self: center;
+    background-color: rgb(139, 0, 111);
+}
+
+#game-commentary {
+    grid-row: 6 / span 1;
+    background-color: #00ff88;
+}
+
+#game-commentary-p {
+    padding: 1%;
 }
 
 #buttons-section {
