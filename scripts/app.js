@@ -2,21 +2,31 @@ console.log("Hi! I am Ghosty...boo");
 
 const petNameKey = 'PETNAME';
 const petKey = 'PET';
+let petObj = {}; //global object to store pet
+
+class Pet {
+    constructor(name) {
+        this.name = name;
+        this.age = generateRandomInRange(1000, 2000) + ' YEARS';
+        this.hunger = 5;
+        this.sleepiness = 5;
+        this.boredom = 5;
+    }
+}
+
+// class Game {
+//     constructor(pet) {
+//         this.pet = pet;
+//     }
+//     handlePlay() {
+
+//     }
+// }
 
 function generateRandomInRange(lowerBound, upperBound) {
     return Math.floor(Math.random()*(upperBound-lowerBound+1)) + lowerBound;
 }
 
-const boredomOutcomes = [
-    {
-        scoreChange: -1,
-        commentary: `Great job! Your pet is having a lot of fun!!!`
-    },
-    {
-        scoreChange: 1, 
-        commentary: `You tried to play fetch with your pet. It did not like it. It wants to play Haunt instead.`
-    }
-]
 
 //When coffin button is clicked, navigate to Name Form page
 $('#coffin-btn').click(function() {
@@ -47,35 +57,34 @@ function getItem(keyName) {
 $('#name-form').on('submit', function(event) {
     event.preventDefault();
     let nameEntered = $('#name-textbox').val();
-    storeItem(petNameKey, nameEntered);
+    storeItem(petNameKey, nameEntered.toUpperCase());
     window.location.href = '../pages/game.html';
 });
-class Pet {
-    constructor(name) {
-        this.name = name;
-        this.age = generateRandomInRange(1000, 2000) + ' YEARS';
-        this.hunger = 5;
-        this.sleepiness = 5;
-        this.boredom = 5;
-    }
-}
 
 $('#play-button').on('click', function() {
+    const boredomOutcomes = [
+    {
+        scoreChange: -1,
+        commentary: `Great job! ${petObj.name} is having a lot of fun!!!`
+    },
+    {
+        scoreChange: 1, 
+        commentary: `You tried to play fetch with your ${petObj.name}. It did not like it. It wants to play Haunt instead.`
+    }
+]
+
     const boredomOutcome = boredomOutcomes[generateRandomInRange(0, boredomOutcomes.length-1)];
-    console.log(boredomOutcome);
-    const newBoredomVal = updatePetBoredom(boredomOutcome.scoreChange);
-    displayNewScore('#boredom-val-label', newBoredomVal);
+    $('#game-commentary').text(boredomOutcome.commentary);
+    updatePetBoredom(boredomOutcome.scoreChange);
+    updateBoredomScore();
 });
 
 function updatePetBoredom(scoreChange) {
-    const pet = getItem(petKey);
-    pet.boredom += scoreChange;
-    storeItem(petKey, pet);
-    return pet.boredom;
+    petObj.boredom += scoreChange;
 }
 
-function displayNewScore(label, newVal) {
-        $(label).text(newVal);
+function updateBoredomScore() {
+    $('#boredom-val-label').text(petObj.boredom);
 }
 
 function displayStats(petObj) {
@@ -83,15 +92,15 @@ function displayStats(petObj) {
     $('#age-val-label').text(petObj.age);
     $('#hunger-val-label').text(petObj.hunger);
     $('#sleepiness-val-label').text(petObj.sleepiness);
-    $('#boredom-val-label').text(petObj.boredom);
+    updateBoredomScore();
 }
 
 window.addEventListener("load", function(){
     if (window.location.pathname === '/pages/game.html') {
         console.log("Game loaded!");
-        const petObj = new Pet(getItem(petNameKey));
-        storeItem(petKey, JSON.stringify(petObj));
+        petObj = new Pet(getItem(petNameKey));
         displayStats(petObj);
+        $('#game-commentary').text(`${petObj.name} is so happy to be your pet! Take good care of it. Remember to feed it, play with it, and give it enough rest or it will die.`);
     }
 });
 
