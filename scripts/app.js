@@ -1,5 +1,4 @@
 console.log("Hi! I am Ghosty...boo");
-let petName;
 let petGhost;
 
 $('#coffin-btn').click(function() {
@@ -12,7 +11,7 @@ function generateRandomInRange(lowerBound, upperBound) {
 class Pet {
     constructor(name) {
         this.name = name;
-        this.age = generateRandomInRange(1000, 5000);
+        this.age = generateRandomInRange(1000, 2000) + ' YEARS';
         this.hunger = 5;
         this.sleepiness = 5;
         this.boredom = 5;
@@ -22,21 +21,29 @@ class Pet {
 // When pet's name is entered, take to game page
 $('#name-form').on('submit', function(event) {
     event.preventDefault();
-    console.log('petName Before: ' + petName);
-    petName = $('#name-textbox').val();
-    console.log('petName After: ' + petName);
-
-    petGhost = new Pet(petName);
-
+    localStorage.setItem('petName', petName);
     window.location.href = '../pages/game.html';
-    event.preventDefault();
-    $('#name-val-label').text(petGhost.name);
-    $('#age-val-label').text(petGhost.age);
-    console.log(`Writing pet name: ${petGhost.name}`);
 });
 
+function createPet(petName) {
+    petGhost = new Pet(petName);
+}
+
+function displayStats() {
+    $('#name-val-label').text(petGhost.name);
+    $('#age-val-label').text(petGhost.age);
+    $('#hunger-val-label').text(petGhost.hunger);
+    $('#sleepiness-val-label').text(petGhost.sleepiness);
+    $('#boredom-val-label').text(petGhost.boredom);
+}
 
 
-// $(document.window.).ready(function(){
-
-// });
+window.addEventListener("load", function(){
+    if (window.location.pathname === '/pages/game.html') {
+        console.log("Game loaded!");
+        const petName = localStorage.getItem('petName');
+        console.log(petName);
+        createPet(petName);
+        displayStats();
+    }
+});
