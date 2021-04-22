@@ -71,8 +71,11 @@ class Game {
         }
     }
 
-    getRandomOutcome(outcomesArray) {
-        return outcomesArray[generateRandomInRange(0, outcomesArray.length-1)];
+    getRandomOutcome(propertyName) {
+        let outcomesArrName = propertyName + 'Outcomes';
+        const randomIndex = generateRandomInRange(0, this[outcomesArrName].length-1);
+        console.log(this[outcomesArrName][randomIndex]);
+        return this[outcomesArrName][randomIndex];
     }
 
     handleScoreChange(propertyName, changeAmount) {
@@ -95,22 +98,10 @@ class Game {
         $('#game-commentary').text(message);
     }
 
-    handlePlay() {
-        const boredomOutcome = this.getRandomOutcome(this.boredomOutcomes);
-        this.handleScoreChange(boredom, boredomOutcome.scoreChange);
-        this.updateCommentary(boredomOutcome.commentary);
-    }
-
-    handleFeed() {
-        const hungerOutcome = this.getRandomOutcome(this.hungerOutcomes);
-        this.handleScoreChange(hunger, hungerOutcome.scoreChange);
-        this.updateCommentary(hungerOutcome.commentary);
-    }
-
-    handleSleep() {
-        const sleepinessOutcome = this.getRandomOutcome(this.sleepinessOutcomes);
-        this.handleScoreChange(sleepiness, sleepinessOutcome.scoreChange);
-        this.updateCommentary(sleepinessOutcome.commentary);
+    handle(propertyName) {
+        const outcome = this.getRandomOutcome(propertyName);
+        this.handleScoreChange(propertyName, outcome.scoreChange);
+        this.updateCommentary(outcome.commentary);
     }
 }
 
@@ -148,15 +139,15 @@ $('#name-form').on('submit', function(event) {
 });
 
 $('#play-button').on('click', function() {
-    game.handlePlay();
+    game.handle(boredom);
 });
 
 $('#feed-button').on('click', function() {
-    game.handleFeed();
+    game.handle(hunger);
 });
 
 $('#sleep-button').on('click', function() {
-    game.handleSleep();
+    game.handle(sleepiness);
 });
 
 window.addEventListener("load", function(){
