@@ -1,11 +1,11 @@
-console.log("Hi! I am Ghosty...boo");
-
 const petNameKey = 'PETNAME';
 const petKey = 'PET';
 const hunger = 'hunger';
 const sleepiness = 'sleepiness';
 const boredom = 'boredom';
 const age = 'age';
+const interval = 5000;
+const ageInterval = 2000;
 const propertiesArr = [hunger, sleepiness, boredom, age];
 let petObj = {}; //global object to store pet
 let game = {};
@@ -16,7 +16,7 @@ function generateRandomInRange(lowerBound, upperBound) {
 class Pet {
     constructor(name) {
         this.name = name;
-        this.age = generateRandomInRange(1000, 2000) + ' YEARS';
+        this.age = generateRandomInRange(1000, 2000);
         this.hunger = 5;
         this.sleepiness = 5;
         this.boredom = 5;
@@ -25,7 +25,7 @@ class Pet {
 class Game {
     constructor(pet) {
         this.pet = pet;
-        this.isGameOver = false;
+        this.timers = {};
         this.boredomOutcomes = [
             {
                 scoreChange: -1,
@@ -60,8 +60,11 @@ class Game {
 
     initialize() {
         this.displayStats();
-        const initialMessage = `${this.pet.name} is so happy to be your pet! Take good care of it. Remember to feed it, play with it, and give it enough rest or it will die.`
+        const initialMessage = `${this.pet.name} is so happy to be your pet! Take good care of it. Remember to feed it, play with it, and give it enough rest or it will die. Don't let any of the scores get to 10.`
         this.updateCommentary(initialMessage);
+        for(const property of propertiesArr) {
+            this.startTimer(property);
+        }
     }
 
     displayStats() {
@@ -74,19 +77,18 @@ class Game {
     getRandomOutcome(propertyName) {
         let outcomesArrName = propertyName + 'Outcomes';
         const randomIndex = generateRandomInRange(0, this[outcomesArrName].length-1);
-        console.log(this[outcomesArrName][randomIndex]);
         return this[outcomesArrName][randomIndex];
     }
 
     handleScoreChange(propertyName, changeAmount) {
         this.pet[propertyName] += changeAmount;
+        this.updateScore(propertyName);
         if(this.pet[propertyName] < 1) {
             this.pet[propertyName] = 1;
         }
         if(this.pet[propertyName] >= 10){
-            this.isGameOver = true;
+            this.handleGameOver();
         }
-        this.updateScore(propertyName);
     }
 
     updateScore(propertyName) {
@@ -100,8 +102,48 @@ class Game {
 
     handle(propertyName) {
         const outcome = this.getRandomOutcome(propertyName);
-        this.handleScoreChange(propertyName, outcome.scoreChange);
         this.updateCommentary(outcome.commentary);
+        this.restartTimer(propertyName);
+        this.handleScoreChange(propertyName, outcome.scoreChange);
+    }
+
+    //has to be an arrow function otherwise the timer does not work
+    increaseScore = (propertyName) => {
+        return this.handleScoreChange(propertyName, 1);
+    }
+
+    increaseAge = () => {
+        this.pet.age += 5;
+        this.updateScore(age);
+    }
+
+    startTimer(propertyName) {
+        if(propertyName === age) {
+            this.timers[propertyName] = setInterval(this.increaseAge, ageInterval);
+        } else {
+            this.timers[propertyName] = setInterval(this.increaseScore, interval, propertyName);
+        }
+    }
+
+    stopTimer(propertyName) {
+        clearInterval(this.timers[propertyName]);
+    }
+
+    restartTimer(propertyName) {
+        clearInterval(this.timers[propertyName]);
+        this.startTimer(propertyName);
+    }
+
+    handleGameOver() {
+        $('.game-play-btn').attr('disabled', true);
+        let gameOverMsg = `GAME OVER! ${this.pet.name} died `;
+        gameOverMsg += (this.pet.hunger >= 10) ? 'of hunger ': '';
+        gameOverMsg += (this.pet.sleepiness >= 10) ? 'due to lack of sleep ' : '';
+        gameOverMsg += (this.pet.boredom >= 10) ? 'from boredom ' : '';
+        this.updateCommentary(gameOverMsg);
+        for(const property of propertiesArr) {
+            this.stopTimer(property);
+        }
     }
 }
 
@@ -110,7 +152,7 @@ $('#coffin-btn').click(function() {
     window.location.href = 'pages/name-form.html';
 });
 
-//Function to store from local storage
+//Function to store to local storage
 function storeItem(keyName, value) {
     if(keyName === petNameKey) {
         localStorage.setItem(petNameKey, value);
