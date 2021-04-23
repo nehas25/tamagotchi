@@ -134,13 +134,22 @@ class Game {
         this.startTimer(propertyName);
     }
 
-    handleGameOver() {
+    disableAllButtons() {
         $('.game-play-btn').attr('disabled', true);
+    }
+
+    constructGameOverMessage() {
         let gameOverMsg = `GAME OVER! ${this.pet.name} died `;
         gameOverMsg += (this.pet.hunger >= 10) ? 'of hunger ': '';
         gameOverMsg += (this.pet.sleepiness >= 10) ? 'due to lack of sleep ' : '';
         gameOverMsg += (this.pet.boredom >= 10) ? 'from boredom ' : '';
-        this.updateCommentary(gameOverMsg);
+        return gameOverMsg;
+    }
+
+    handleGameOver() {
+        this.disableAllButtons();
+        this.updateCommentary(this.constructGameOverMessage());
+        //Stop all timers
         for(const property of propertiesArr) {
             this.stopTimer(property);
         }
