@@ -13,9 +13,68 @@ body {
 }
 
 #main-img {
-    width: 150px;
-    height: 125px;
+    width: 250px;
+    height: 250px;
+
+    animation: fly-around 10s infinite ease-in-out;
+
+/* animation: fade 0.5s infinite alternate, shrink 0.53s infinite alternate; */
+    /* animation-name            : pulse;
+    animation-duration        : 0.5s;
+    animation-iteration-count : infinite;
+    animation-direction       : alternate; */
 }
+
+@keyframes fly-around {
+	
+	0% {
+		transform: scale(0.3) translateX(-10vw);
+	}
+	
+	/* 10% {
+		transform: translateY(2vh) translateX(10vw) scale(0.4);
+	}
+	
+	20% {
+		transform: translateY(0vh) translateX(30vw) scale(0.5);
+	} */
+	
+	30% {
+		transform: translateY(4vh) translateX(50vw) scale(0.6);
+	}
+	
+	/* 40% {
+		transform: translateY(2vh) translateX(70vw) scale(0.6);
+	}
+	
+	50% {
+		transform: translateY(0vh) translateX(90vw) scale(0.6);
+	} */
+	
+	60% {
+		transform: translateY(0vh) translateX(110vw) scale(0.6);
+	}
+	
+	100% {
+		transform: translateY(0vh) translateX(110vw) scale(0.6);
+	}
+	
+}
+
+
+/* @keyframes fade {
+    from { opacity   : 1; }
+    to   { opacity   : 0.25; }
+}
+@keyframes shrink {
+    from { transform : scale(1); }
+    to   { transform : scale(0.75); }
+} */
+
+/* @keyframes pulse {
+   from { transform: scale(1)   ; opacity: 1;    }
+   to   { transform: scale(0.75); opacity: 0.25; }
+} */
 
 #title {
     grid-row: 1;
@@ -48,7 +107,7 @@ body {
 #main {
     grid-row: 2 / span 4;
     grid-column: 3 / span 5;
-    background-color: goldenrod;
+    background-color: #000;
     border: 5px #EF3D23  solid;
     font-size: 1.5em;
     padding: 1% 1%;
@@ -58,8 +117,8 @@ body {
 
 #main-area {
     grid-row: 1 / span 5;
-    place-self: center;
-    background-color: rgb(139, 0, 111);
+    /* place-self: center; */
+    background-color: #000;
 }
 
 #game-commentary {
@@ -88,3 +147,4 @@ body {
     height: 45%;
     font-size: 2em;
 }
+
