@@ -9,7 +9,9 @@ body {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: repeat(8, 1fr);
-    border: 5px pink solid;
+    border: 15px hsl(305, 71%, 69%) ridge;
+    /* border-style: solid; */
+
 }
 
 #main-img {
@@ -28,7 +30,7 @@ body {
 @keyframes fly-around {
 	
 	0% {
-		transform: scale(0.3) translateX(-10vw);
+		transform:  translateX(10vw) translateY(4vh);
 	}
 	
 	/* 10% {
@@ -40,7 +42,7 @@ body {
 	} */
 	
 	30% {
-		transform: translateY(4vh) translateX(50vw) scale(0.6);
+		transform: translateX(40vw) translateY(10vh);
 	}
 	
 	/* 40% {
@@ -52,11 +54,11 @@ body {
 	} */
 	
 	60% {
-		transform: translateY(0vh) translateX(110vw) scale(0.6);
+		transform: translateX(30vw) translateY(5vh)  scale(0.6);
 	}
 	
 	100% {
-		transform: translateY(0vh) translateX(110vw) scale(0.6);
+		transform: translateX(10vw) translateY(0vh)  scale(0.6);
 	}
 	
 }
@@ -79,21 +81,24 @@ body {
 #title {
     grid-row: 1;
     grid-column: 1 / span 8;
-    background-color: rgb(85, 85, 85);
     place-self: center;
     font-size: 2em;
+    padding-right: 2%;
+    padding-left: 2%;
+    border:15px hsl(305, 71%, 69%) ridge;
 }
 
 #stats {
     grid-row: 2 / span 4;
     grid-column: 2 / span 1;
-    background-color: skyblue;
+    background-color: #0c0c0c6d;
     font-size: 1.8em;
+    color: hsl(305, 71%, 69%);
     display: grid;
 }
 
 .value-label {
-    background-color: #0073ff;
+    /* background-color: #0073ff; */
 }
 
 .name-section, .score-section {
@@ -101,14 +106,14 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     padding: 0 0 0 10%;
-    border: 10px darkblue ridge;
+    border: 10px white ridge;
 }
 
 #main {
     grid-row: 2 / span 4;
     grid-column: 3 / span 5;
     background-color: #000;
-    border: 5px #EF3D23  solid;
+    border: 10px white ridge;
     font-size: 1.5em;
     padding: 1% 1%;
     display: grid;
@@ -119,32 +124,43 @@ body {
     grid-row: 1 / span 5;
     /* place-self: center; */
     background-color: #000;
+    background-image: url("../resources/room-2.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
 }
 
 #game-commentary {
     grid-row: 6 / span 1;
-    background-color: #00ff88;
+    background-color: hsl(305, 71%, 69%);
     text-align: center;
+    color: #000;
+    display: grid;
+    align-items: center;
 }
 
 #game-commentary-p {
     padding: 1%;
+    
 }
 
 #buttons-section {
     grid-row: 6 / span 1;
     grid-column: 2 / span 6;
-    background-color: seagreen;
+    background-color: black;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    border: 10px white ridge;
 }
 
 .game-play-btn {
     color: black;
-    background-color: bisque;
     width: 20%;
     height: 45%;
-    font-size: 2em;
+    font-size: 1.7em;
+    cursor: pointer;
+    color: hsl(305, 71%, 69%);
+    background-color: black;
+    border: 10px white ridge;
 }
-

@@ -39,7 +39,8 @@ body {
 
 .shadow {
   position: absolute;
-  background-color: #EF3D23;
+  background-color: hsl(305, 71%, 69%);
+  /* background-color: #EF3D23; */
   width: 50%;
   height: 10%;
   border-radius: 50%;
@@ -71,7 +72,7 @@ body {
     margin-top: -75.5px;
     order: 2;
     padding: 10px;
-    border: 3mm ridge #FFF;
+    border: 3mm ridge hsl(305, 71%, 69%);
 }
 
 #name-form {
@@ -92,10 +93,14 @@ body {
     margin: 5px;
     text-align: center;
     font-size: 0.7em;
-    color: #EF3D23;
+    color: hsl(305, 71%, 69%);
 }
 
 #name-submit {
+    cursor: pointer;
     margin: 8px;
     font-size: 0.7em;
+    color: hsl(305, 71%, 69%);
+    background-color: black;
+    border: 5px white ridge;
 }
