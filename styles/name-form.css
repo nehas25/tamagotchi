@@ -1,95 +1,94 @@
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: black;
     font-family: 'Creepster', cursive;
     font-size: 2em;
+    border: 15px hsl(305, 71%, 69%) solid;
 }
 
 .main-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 }
 
 .ghost {
     width: 150px;
     height: 150px;
 }
-
-.ghost-container {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  margin-left: -64.5px;
-  margin-top: -85.5px;
-  display: flex;
-  flex-direction: column;
+.ghost-section {
+    grid-row: 1;
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .ghost {
-  animation: float 3s ease-out infinite;
+    animation: float 3s ease-out infinite;
 }
 
 @keyframes float {
-  50% {
-     transform: translate(0, 20px);
-  }
+    50% {
+        transform: translate(0, 20px);
+    }
 }
 
 .shadow {
-  position: absolute;
-  background-color: hsl(305, 71%, 69%);
-  /* background-color: #EF3D23; */
-  width: 50%;
-  height: 10%;
-  border-radius: 50%;
-  left: 20px;
-  top: 190px; 
-  animation: shrink 3s ease-out infinite;
+    background-color: hsl(305, 71%, 69%);
+    width: 140px;
+    height: 25px;
+    border-radius: 50%;
+    margin-top: 20%;
+    margin-left: 7%;
+    
+    animation: shrink 3s ease-out infinite;
 }
 
 @keyframes shrink {
-  0% {
-    width: 70%;
-    margin: 0 5%;
-  }
-  50% {
-    width: 30%;
-    margin: 0 18%;
-  }
-  100% {
-    width: 70%;
-    margin: 0 5%;
-  }
+    0% {
+        width: 70%;
+        margin-right: 12%;
+        margin-left: 17%
+    }
+    50% {
+        width: 30%;
+        margin-right: 25%;
+        margin-left: 30%
+    }
+    100% {
+        width: 70%;
+        margin-right: 12%;
+        margin-left: 17%
+    }
 }
 
 #name-section {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    margin-left: -135px;
-    margin-top: -75.5px;
-    order: 2;
-    padding: 10px;
-    border: 3mm ridge hsl(305, 71%, 69%);
+    grid-row: 2 / span 1;
+    place-self: center;
+    margin-top: -5%;
+    margin-left: -5%;
 }
 
 #name-form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    border: 10px hsl(305, 71%, 69%) solid;
+    width: 110%;
+    padding: 5%;
 }
-
 
 #name-label {
     color: white;
     margin: 5px;
 }
 
-
 #name-textbox {
-    /* width: 50%; */
     margin: 5px;
     text-align: center;
     font-size: 0.7em;
@@ -102,5 +101,5 @@ body {
     font-size: 0.7em;
     color: hsl(305, 71%, 69%);
     background-color: black;
-    border: 5px white ridge;
+    border: 5px white solid;
 }

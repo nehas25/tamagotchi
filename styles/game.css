@@ -9,74 +9,9 @@ body {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: repeat(8, 1fr);
-    border: 15px hsl(305, 71%, 69%) ridge;
+    border: 15px hsl(305, 71%, 69%) solid;
     /* border-style: solid; */
-
 }
-
-#main-img {
-    width: 250px;
-    height: 250px;
-
-    animation: fly-around 10s infinite ease-in-out;
-
-/* animation: fade 0.5s infinite alternate, shrink 0.53s infinite alternate; */
-    /* animation-name            : pulse;
-    animation-duration        : 0.5s;
-    animation-iteration-count : infinite;
-    animation-direction       : alternate; */
-}
-
-@keyframes fly-around {
-	
-	0% {
-		transform:  translateX(10vw) translateY(4vh);
-	}
-	
-	/* 10% {
-		transform: translateY(2vh) translateX(10vw) scale(0.4);
-	}
-	
-	20% {
-		transform: translateY(0vh) translateX(30vw) scale(0.5);
-	} */
-	
-	30% {
-		transform: translateX(40vw) translateY(10vh);
-	}
-	
-	/* 40% {
-		transform: translateY(2vh) translateX(70vw) scale(0.6);
-	}
-	
-	50% {
-		transform: translateY(0vh) translateX(90vw) scale(0.6);
-	} */
-	
-	60% {
-		transform: translateX(30vw) translateY(5vh)  scale(0.6);
-	}
-	
-	100% {
-		transform: translateX(10vw) translateY(0vh)  scale(0.6);
-	}
-	
-}
-
-
-/* @keyframes fade {
-    from { opacity   : 1; }
-    to   { opacity   : 0.25; }
-}
-@keyframes shrink {
-    from { transform : scale(1); }
-    to   { transform : scale(0.75); }
-} */
-
-/* @keyframes pulse {
-   from { transform: scale(1)   ; opacity: 1;    }
-   to   { transform: scale(0.75); opacity: 0.25; }
-} */
 
 #title {
     grid-row: 1;
@@ -85,7 +20,7 @@ body {
     font-size: 2em;
     padding-right: 2%;
     padding-left: 2%;
-    border:15px hsl(305, 71%, 69%) ridge;
+    border:15px hsl(305, 71%, 69%) solid;
 }
 
 #stats {
@@ -97,23 +32,19 @@ body {
     display: grid;
 }
 
-.value-label {
-    /* background-color: #0073ff; */
-}
-
 .name-section, .score-section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     padding: 0 0 0 10%;
-    border: 10px white ridge;
+    border: 10px white solid;
 }
 
 #main {
     grid-row: 2 / span 4;
     grid-column: 3 / span 5;
     background-color: #000;
-    border: 10px white ridge;
+    border: 10px white solid;
     font-size: 1.5em;
     padding: 1% 1%;
     display: grid;
@@ -127,7 +58,7 @@ body {
     background-image: url("../resources/room-2.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.5;
+    /* opacity: 0.5; */
 }
 
 #game-commentary {
@@ -151,16 +82,138 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 10px white ridge;
+    border: 10px white solid;
 }
 
 .game-play-btn {
-    color: black;
     width: 20%;
     height: 45%;
     font-size: 1.7em;
     cursor: pointer;
     color: hsl(305, 71%, 69%);
     background-color: black;
-    border: 10px white ridge;
+    border: 10px white solid;
 }
+
+.happy {
+    animation: float 3s ease-out infinite;
+}
+
+@keyframes float {
+    50% {
+        transform: translate(0, 20px);
+    }
+}
+
+#ghost-img {
+    width: 180px;
+    height: 180px;
+
+    margin-left: 40%;
+    margin-top: 10%;
+    opacity: 0.7;
+
+    
+
+    /* animation: fly-around 10s infinite ease-in-out; */
+
+/* animation: fade 0.5s infinite alternate, shrink 0.53s infinite alternate; */
+    /* animation-name            : pulse;
+    animation-duration        : 0.5s;
+    animation-iteration-count : infinite;
+    animation-direction       : alternate; */
+}
+
+.happy {
+    animation: happy 1s ease-out infinite;
+}
+
+.fun {
+    animation: fun 2s infinite ease-in-out; 
+}
+
+@keyframes happy {
+    25% {
+        transform: translateY(40%);
+        height: 40%;
+    }
+    50% {
+        transform: translateY(0%);
+        height: 60%;
+    }
+    75% {
+        transform: translateY(-40%);
+        height: 40%;
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes fun {
+    25% {
+        transform: translateX(50%);
+        /* height: 0%; */
+    }
+    50% {
+        transform: translateX(0%);
+        /* height: 60%; */
+    }
+    75% {
+        transform: translateX(-50%);
+        /* height: 40%; */
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* @keyframes fly-around {
+	
+	0% {
+		transform:  translateX(10vw) translateY(4vh);
+	}
+	
+	10% {
+		transform: translateY(2vh) translateX(10vw) scale(0.4);
+	}
+	
+	20% {
+		transform: translateY(0vh) translateX(30vw) scale(0.5);
+	} 
+	
+	30% {
+		transform: translateX(40vw) translateY(10vh);
+	}
+	
+	40% {
+		transform: translateY(2vh) translateX(70vw) scale(0.6);
+	}
+	
+	50% {
+		transform: translateY(0vh) translateX(90vw) scale(0.6);
+	} 
+	
+	60% {
+		transform: translateX(30vw) translateY(5vh)  scale(0.6);
+	}
+	
+	100% {
+		transform: translateX(10vw) translateY(0vh)  scale(0.6);
+	}
+}  */
+
+
+/* @keyframes fade {
+    from { opacity   : 1; }
+    to   { opacity   : 0.25; }
+}
+@keyframes shrink {
+    from { transform : scale(1); }
+    to   { transform : scale(0.75); }
+} */
+
+/* @keyframes pulse {
+   from { transform: scale(1)   ; opacity: 1;    }
+   to   { transform: scale(0.75); opacity: 0.25; }
+} */

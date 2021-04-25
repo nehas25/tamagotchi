@@ -29,35 +29,41 @@ class Game {
         this.boredomOutcomes = [
             {
                 scoreChange: -1,
-                commentary: `Great job! ${this.pet.name} is having a lot of fun!!!`
+                commentary: `Great job! ${this.pet.name} is having a lot of fun!!!`,
+                animationKey: 'fun'
             },
             {
                 scoreChange: 1, 
-                commentary: `You tried to play fetch with your ${this.pet.name}. It did not like it. It wants to play Haunt instead.`
+                commentary: `You tried to play fetch with your ${this.pet.name}. It did not like it. It wants to play Haunt instead.`,
+                animationKey: 'sad'
             }
         ];
         this.hungerOutcomes = [
             {
                 scoreChange: -1,
-                commentary: `Yummm ${this.pet.name} loves cake!`
+                commentary: `Yummm ${this.pet.name} loves cake!`,
+                animationKey: 'happy'
             },
             {
                 scoreChange: 1, 
-                commentary: `${this.pet.name} says "Yuck! I want cake. Not broccoli.`
+                commentary: `${this.pet.name} says "Yuck! I want cake. Not broccoli.`,
+                animationKey: 'angry'
             }
         ];
         this.sleepinessOutcomes = [
             {
                 scoreChange: -1,
-                commentary: `${this.pet.name} has too much energy. It refuses to sleep.`
+                commentary: `${this.pet.name} slept like a ghost baby.`,
+                animationKey: 'sleeping'
             },
             {
                 scoreChange: 1, 
-                commentary: `${this.pet.name} slept like a ghost baby.`
+                commentary: `${this.pet.name} has too much energy. It refuses to sleep.`,
+                animationKey: 'love'
             }
         ];
     }
-
+    
     initialize() {
         this.displayStats();
         const initialMessage = `${this.pet.name} is so happy to be your pet! Take good care of it. Remember to feed it, play with it, and give it enough rest or it will die. Don't let any of the scores get to 10.`
@@ -66,20 +72,20 @@ class Game {
             this.startTimer(property);
         }
     }
-
+    
     displayStats() {
         $('#name-val-label').text(this.pet.name);
         for(const property of propertiesArr) {
             this.updateScore(property);
         }
     }
-
+    
     getRandomOutcome(propertyName) {
         let outcomesArrName = propertyName + 'Outcomes';
         const randomIndex = generateRandomInRange(0, this[outcomesArrName].length-1);
         return this[outcomesArrName][randomIndex];
     }
-
+    
     handleScoreChange(propertyName, changeAmount) {
         this.pet[propertyName] += changeAmount;
         this.updateScore(propertyName);
@@ -90,33 +96,44 @@ class Game {
             this.handleGameOver();
         }
     }
-
+    
     updateScore(propertyName) {
         let labelName = `#${propertyName}-val-label`;
         $(labelName).text(this.pet[propertyName]);
     }
-
+    
     updateCommentary(message) {
         $('#game-commentary').text(message);
     }
-
+    
+    triggerAnimation(animationKey) {
+        let $ghostImg = $('#ghost-img');
+        console.log($ghostImg.attr('class'));
+        if($ghostImg.attr('class') !== undefined) {
+            $ghostImg.removeClass();
+        }
+        $ghostImg.attr('src', `../resources/ghost-${animationKey}.png`)
+        $ghostImg.addClass(animationKey);
+    }
+    
     handle(propertyName) {
         const outcome = this.getRandomOutcome(propertyName);
         this.updateCommentary(outcome.commentary);
         this.restartTimer(propertyName);
         this.handleScoreChange(propertyName, outcome.scoreChange);
+        this.triggerAnimation(outcome.animationKey);
     }
-
+    
     //has to be an arrow function otherwise the timer does not work
     increaseScore = (propertyName) => {
         return this.handleScoreChange(propertyName, 1);
     }
-
+    
     increaseAge = () => {
         this.pet.age += 5;
         this.updateScore(age);
     }
-
+    
     startTimer(propertyName) {
         if(propertyName === age) {
             this.timers[propertyName] = setInterval(this.increaseAge, ageInterval);
@@ -124,20 +141,20 @@ class Game {
             this.timers[propertyName] = setInterval(this.increaseScore, interval, propertyName);
         }
     }
-
+    
     stopTimer(propertyName) {
         clearInterval(this.timers[propertyName]);
     }
-
+    
     restartTimer(propertyName) {
         clearInterval(this.timers[propertyName]);
         this.startTimer(propertyName);
     }
-
+    
     disableAllButtons() {
         $('.game-play-btn').attr('disabled', true);
     }
-
+    
     constructGameOverMessage() {
         let gameOverMsg = `GAME OVER! ${this.pet.name} died `;
         gameOverMsg += (this.pet.hunger >= 10) ? 'of hunger ': '';
@@ -145,7 +162,7 @@ class Game {
         gameOverMsg += (this.pet.boredom >= 10) ? 'from boredom ' : '';
         return gameOverMsg;
     }
-
+    
     handleGameOver() {
         this.disableAllButtons();
         this.updateCommentary(this.constructGameOverMessage());
