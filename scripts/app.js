@@ -5,7 +5,7 @@ const sleepiness = 'sleepiness';
 const boredom = 'boredom';
 const age = 'age';
 const interval = 5000;
-const ageInterval = 2000;
+const ageInterval = 5000;
 const propertiesArr = [hunger, sleepiness, boredom, age];
 let petObj = {}; //global object to store pet
 let game = {};
@@ -30,7 +30,7 @@ class Game {
             {
                 scoreChange: -1,
                 commentary: `Great job! ${this.pet.name} is having a lot of fun!!!`,
-                animationKey: 'fun'
+                animationKey: 'love'
             },
             {
                 scoreChange: 1, 
@@ -59,7 +59,7 @@ class Game {
             {
                 scoreChange: 1, 
                 commentary: `${this.pet.name} has too much energy. It refuses to sleep.`,
-                animationKey: 'love'
+                animationKey: 'fun'
             }
         ];
     }
@@ -166,6 +166,7 @@ class Game {
     handleGameOver() {
         this.disableAllButtons();
         this.updateCommentary(this.constructGameOverMessage());
+        this.triggerAnimation('dead');
         //Stop all timers
         for(const property of propertiesArr) {
             this.stopTimer(property);

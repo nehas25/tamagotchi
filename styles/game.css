@@ -124,12 +124,52 @@ body {
     animation-direction       : alternate; */
 }
 
-.happy {
-    animation: happy 1s ease-out infinite;
+.love {
+    animation: love 3s infinite cubic-bezier(0,0,1,1);
 }
 
-.fun {
-    animation: fun 2s infinite ease-in-out; 
+@keyframes love {
+    25% {
+        transform: translateX(60%);
+        /* height: 0%; */
+    }
+    50% {
+        transform: translateX(0%);
+        /* height: 60%; */
+    }
+    75% {
+        transform: translateX(-60%);
+        /* height: 40%; */
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.sad {
+    animation: sad 3s infinite ease-in-out;
+}
+
+@keyframes sad {
+    25% {
+        transform: scale(0.8) translateX(80%);
+        /* height: 0%; */
+    }
+    50% {
+        transform: scale(0.6) translateX(50%);
+        /* height: 60%; */
+    }
+    75% {
+        transform: scale(0.5) translateX(30%);
+        /* height: 40%; */
+    }
+    100% {
+        transform: scale(0.4) translateX(0%);
+    }
+}
+
+.happy {
+    animation: happy 1s ease-out infinite;
 }
 
 @keyframes happy {
@@ -150,23 +190,88 @@ body {
     }
 }
 
-@keyframes fun {
+.angry {
+    animation: sad 3s infinite ease-in-out;
+}
+
+@keyframes angry {
     25% {
-        transform: translateX(50%);
+        transform: scale(0.8) translateX(80%);
         /* height: 0%; */
     }
     50% {
-        transform: translateX(0%);
+        transform: scale(0.6) translateX(50%);
         /* height: 60%; */
     }
     75% {
-        transform: translateX(-50%);
+        transform: scale(0.5) translateX(30%);
         /* height: 40%; */
     }
     100% {
-        transform: translateX(0%);
+        transform: scale(0.4) translateX(0%);
     }
 }
+
+
+.sleeping {
+    animation: sleeping 3s ease-in-out infinite;
+}
+
+@keyframes sleeping {
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.fun {
+    animation: fun 3s infinite linear; 
+}
+
+@keyframes fun {
+    10% {
+        transform: scale(0.8) translateX(10vw);
+    }
+
+    20% {
+        transform: scale(0.7) translateX(20vw);
+    }
+
+    30% {
+        transform: scale(0.6) translateX(15vw);
+    }
+
+    40% {
+        transform: scale(0.5) translateX(5vw);
+    }
+
+    50% {
+        transform: scale(0.5) translateX(0vw);
+    }
+
+    60% {
+        transform: scale(0.5) translateX(-5vw);
+    }
+
+    70% {
+        transform: scale(0.6) translateX(-15vw);
+    }
+
+    80% {
+        transform: scale(0.7) translateX(-20vw);
+    }
+
+    90% {
+        transform: scale(0.8) translateX(-10vw);
+    }
+
+    100% {
+        transform: scale(1) translateX(0vw);
+    }
+}
+
 
 /* @keyframes fly-around {
 	
