@@ -25,20 +25,24 @@ This project was created as part of General Assembly's Software Engineering Imme
 Wireframes can be found at [wireframes/wireframe.pdf](https://git.generalassemb.ly/neha-s25/tamagotchi/blob/master/wireframes/wireframe.pdf)
 
 # User Stories
+
 1. When the user clicks on coffin button:
- - coffin opens
- - ghost comes out
- - a form is presented to user to name their pet ghost
+    * coffin opens
+    * ghost comes out
+    * a form is presented to user to name their pet ghost
+
 2. When user clicks on the form submit button, navigate to main game page.
+
 3. The main game page loads with:
- - Default scores set to 5.
- - Name displayed
- - Age is a random number between 1000 and 2000 years and is displayed.
- - An initial message is displayed to inform the user about the game, that they need to take care of their pet by not letting any of the scores get to 10, or it will die.
-  - Start 4 timers: one for age which will increase by 5 at a certain interval. Three other timers will start, for each of Boredom, Hunger, Sleepiness. They all will increase by 1 point after every interval, and will reset timer whenever corresponding button is clicked.
+    *  Default scores set to 5.
+    * Name displayed
+    * Age is a random number between 1000 and 2000 years and is displayed.
+    * An initial message is displayed to inform the user about the game, that they need to take care of their pet by not letting any of the scores get to 10, or it  will die.
+    * Start 4 timers: one for age which will increase by 5 at a certain interval. Three other timers will start, for each of Boredom, Hunger, Sleepiness. They all will increase by 1 point after every interval, and will reset timer whenever corresponding button is clicked.
+
 4. When user clicks on Play button:
- - choose a positive or negative outcome at random. If outcome is positive, Boredom score will decrease by 1 point, otherwise it will increase by 1 point.
- - Display score change.
- - Display relevant commentary based on the outcome. Each outcome has a commentary attached to it.
- - Reset corresponding timer.
-- Display corresponding animation
+    * choose a positive or negative outcome at random. If outcome is positive, Boredom score will decrease by 1 point, otherwise it will increase by 1 point.
+    * Display score change.
+    * Display relevant commentary based on the outcome. Each outcome has a commentary attached to it.
+    * Reset corresponding timer.
+    * Display corresponding animation
