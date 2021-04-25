@@ -5,6 +5,9 @@ html, body {
 body {
     background-color: black;
     border: 15px hsl(305, 71%, 69%) solid;
+    color: white;
+    font-family: 'Creepster', cursive;
+    font-size: 2.5em;
 }
 
 #coffin-btn {
@@ -16,28 +19,16 @@ body {
     left: 50%;
     margin-top: -87px;
     margin-left: -75px;
-      color: #fff;
-  /* background-color: #4CAF50; */
-  /* border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999; */
-    /* border: 5px white solid; */
+    color: #fff;
 }
 
-/* #coffin-btn :active {
-  /* background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px); 
-  transform:scale(1.2);
-   box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-} */
+p {
+    text-align: center;
+    padding: 15px;
+}
 
 #coffin-btn:hover {
-  /* Start the shake animation and make the animation last for 0.5 seconds */
-  animation: shake 0.5s;
-
-  /* When the animation is finished, start again */
-  animation-iteration-count: infinite;
+  animation: shake 0.5s infinite;
 }
 
 /* Reference: https://www.w3schools.com/howto/howto_css_shake_image.asp */
