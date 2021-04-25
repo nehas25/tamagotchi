@@ -51,4 +51,6 @@ Wireframes can be found at [wireframes/wireframe.pdf](https://git.generalassemb.
     * Display corresponding animation
 
 # Final comments
-It was so much fun to develop this project, it felt addictive at times. It was also challenging and pushed me to my limits. I had to hold on to my faith in myself and power through. Many thanks to the instructors, Kenny and Michael, who were a huge help and helped me get unstuck at times. My fellow classmates are also amazing, always encouraging, supporting, and helping each other. Web development is so much fun and I am happy that I have finally started this journey.
+It was so much fun to develop this project, it felt addictive at times. It was also challenging and pushed me to my limits. I had to hold on to my faith in myself and power through. Many thanks to the instructors, Kenny and Michael, who were a huge help and helped me get unstuck at times. My fellow classmates are also amazing, always encouraging, supporting, and helping each other. 
+
+I feel very proud of this accomplishment after just 2 weeks of learning. Web development is so much fun and I am happy that I have finally started on this journey.😄🙌🏽
