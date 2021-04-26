@@ -20,6 +20,7 @@ body {
     margin-top: -87px;
     margin-left: -75px;
     color: #fff;
+    opacity: 1;
 }
 
 p {
@@ -45,3 +46,4 @@ p {
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+

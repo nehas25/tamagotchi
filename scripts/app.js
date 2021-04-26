@@ -88,9 +88,12 @@ class Game {
     
     handleScoreChange(propertyName, changeAmount) {
         this.pet[propertyName] += changeAmount;
-        this.updateScore(propertyName);
         if(this.pet[propertyName] < 1) {
             this.pet[propertyName] = 1;
+        }
+        this.updateScore(propertyName);
+        if(this.pet[propertyName] === 8 || this.pet[propertyName] === 9) {
+            this.triggerScoreAnimation(propertyName);
         }
         if(this.pet[propertyName] >= 10){
             this.handleGameOver();
@@ -108,12 +111,18 @@ class Game {
     
     triggerAnimation(animationKey) {
         let $ghostImg = $('#ghost-img');
-        console.log($ghostImg.attr('class'));
         if($ghostImg.attr('class') !== undefined) {
             $ghostImg.removeClass();
         }
         $ghostImg.attr('src', `../resources/ghost-${animationKey}.png`)
         $ghostImg.addClass(animationKey);
+    }
+
+    triggerScoreAnimation(propertyName) {  
+        console.log(`#${propertyName}-val-label`);      
+        let $label = $(`#${propertyName}-val-label`);
+        console.log("score = " + this.pet[propertyName] + " Triggered shake for ", $label.text);
+        $label.addClass('flashit');
     }
     
     handle(propertyName) {
@@ -219,6 +228,21 @@ $('#sleep-button').on('click', function() {
     game.handle(sleepiness);
 });
 
+    // Reference for below logic for typewriter effect was #8 on the page below.
+    // https://www.codesdope.com/blog/article/12-creative-css-and-javascript-text-typing-animati/
+function typewriterEffectAnimation(content, parentElement) {
+    var elem = '<span>' + content.split('').join('</span><span>') + '</span>';
+
+    $(elem).hide().appendTo(parentElement).each(function (i) {
+        $(this).delay(50 * i).css({
+            display: 'inline',
+            opacity: 0
+        }).animate({
+            opacity: 1
+        }, 100);
+    });
+}
+
 window.addEventListener("load", function(){
     if (window.location.pathname === '/pages/game.html') {
         console.log("Game loaded!");
@@ -226,5 +250,28 @@ window.addEventListener("load", function(){
         game = new Game(petObj);
         game.initialize();
     }
+
+    if (window.location.pathname === '/index.html') {
+        var content = `It was a magical night. You were on one of your usual midnight walks in the cemetery. You hear a sound "Let me out! Let me out!". You look around find a coffin. That's where the sound is coming from! As you get close to it, it starts to shake. You open it.`;
+        typewriterEffectAnimation(content, 'p');
+    }
+    
+    if (window.location.pathname === '/pages/name-form.html') {
+        var content = `Out comes a baby ghost!`;
+        typewriterEffectAnimation(content, '#para');
+    }
 });
+
+document.getElementById('hunger-val-label').onanimationend = () => {
+    console.log('Transitionend triggered');
+    $('#hunger-val-label').removeClass('flashit');
+}
+document.getElementById('sleepiness-val-label').onanimationend = () => {
+    console.log('Transitionend triggered');
+    $('#sleepiness-val-label').removeClass('flashit');
+}
+document.getElementById('boredom-val-label').onanimationend = () => {
+    console.log('Transitionend triggered');
+    $('#boredom-val-label').removeClass('flashit');
+}
 

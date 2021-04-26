@@ -40,6 +40,10 @@ body {
     border: 10px white solid;
 }
 
+/* .value-label {
+    background-color: green;
+} */
+
 #main {
     grid-row: 2 / span 4;
     grid-column: 3 / span 5;
@@ -112,34 +116,40 @@ body {
     margin-left: 40%;
     margin-top: 10%;
     opacity: 0.7;
-    
-    
-    
-    /* animation: fly-around 10s infinite ease-in-out; */
-    
-    /* animation: fade 0.5s infinite alternate, shrink 0.53s infinite alternate; */
-    /* animation-name            : pulse;
-    animation-duration        : 0.5s;
-    animation-iteration-count : infinite;
-    animation-direction       : alternate; */
 }
 
 .love {
-    animation: love 3s infinite cubic-bezier(0,0,1,1);
+    animation: love 3s infinite cubic-bezier(0,0,1,1) reverse;
 }
 
 @keyframes love {
+    12% {
+        transform: translateX(15vw);
+    }
     25% {
-        transform: translateX(60%);
+        transform: translateX(0vw) ;
+    }
+    37% {
+        transform: translateX(-15vw);
     }
     50% {
-        transform: translateX(0%);
+        transform: translateX(0vw);
+    }
+
+    62% {
+        transform: translateY(40%);
+        height: 40%;
     }
     75% {
-        transform: translateX(-60%);
+        transform: translateY(0%);
+        height: 60%;
+    }
+    87% {
+        transform: translateY(-40%);
+        height: 40%;
     }
     100% {
-        transform: translateX(0%);
+        transform: translateY(0%);
     }
 }
 
@@ -258,53 +268,39 @@ body {
     }
 }
 
-
-/* @keyframes fly-around {
-    
-    0% {
-        transform:  translateX(10vw) translateY(4vh);
-    }
-    
-    10% {
-        transform: translateY(2vh) translateX(10vw) scale(0.4);
-    }
-    
-    20% {
-        transform: translateY(0vh) translateX(30vw) scale(0.5);
-    } 
-    
-    30% {
-        transform: translateX(40vw) translateY(10vh);
-    }
-    
-    40% {
-        transform: translateY(2vh) translateX(70vw) scale(0.6);
-    }
-    
-    50% {
-        transform: translateY(0vh) translateX(90vw) scale(0.6);
-    } 
-    
-    60% {
-        transform: translateX(30vw) translateY(5vh)  scale(0.6);
-    }
-    
-    100% {
-        transform: translateX(10vw) translateY(0vh)  scale(0.6);
-    }
-}  */
-
-
-/* @keyframes fade {
-    from { opacity   : 1; }
-    to   { opacity   : 0.25; }
+.flashit {
+    animation-name: flash;
+    animation-duration: 1s;
 }
-@keyframes shrink {
-    from { transform : scale(1); }
-    to   { transform : scale(0.75); }
-} */
 
-/* @keyframes pulse {
-    from { transform: scale(1)   ; opacity: 1;    }
-    to   { transform: scale(0.75); opacity: 0.25; }
-} */
+/* Reference: https://www.w3schools.com/howto/howto_css_shake_image.asp */
+@keyframes flash {
+
+0% {
+    background-color: orange;
+    font-size: 1.2em;
+}
+25% {
+    background-color: red;
+    font-size: 1.3em;
+}
+50% {
+    background-color: orange;
+    font-size: 1.5em;
+}
+75% {
+    background-color: red;
+    font-size: 1.3em;
+}
+  /* 0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); } */
+}

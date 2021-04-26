@@ -7,12 +7,17 @@ body {
     font-family: 'Creepster', cursive;
     font-size: 2em;
     border: 15px hsl(305, 71%, 69%) solid;
+    color: white;
+}
+
+#para {
+    text-align: center;
 }
 
 .main-container {
     height: 100%;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 .ghost {
