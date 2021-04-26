@@ -1,6 +1,6 @@
 # Tamagotchi
 
-[Game url:](TO BE ADDED)
+[Game url:](https://pages.git.generalassemb.ly/neha-s25/tamagotchi/)
 
 Tamagotchi is you favorite virtual pet. Being a good pet owner, you need to feed it, play with it, and make sure it gets enough sleep. Otherwise, it will die. In this game, your pet is a baby ghost. You found it on one of your usual midnight walks in the cemetery. The night was magical. Walking across the cemetery, you heard a sound. You stopped to listen more carefully and you hear "Let me out! Let me out!". You looked around and you find a coffin. It's where the sound is coming from. As you got close to it, it started shaking. You opened it and out came a little ghost. It's your pet now and you need to take care of it. What would you name it?
 
@@ -53,4 +53,4 @@ Wireframes can be found at [wireframes/wireframe.pdf](https://git.generalassemb.
 # Final comments
 It was so much fun to develop this project, it felt addictive at times. It was also challenging and pushed me to my limits. I had to hold on to my faith in myself and power through. Many thanks to the instructors, Kenny and Michael, who were a huge help and helped me get unstuck at times. My fellow classmates are also amazing, always encouraging, supporting, and helping each other. 
 
-I feel very proud of this accomplishment after just 2 weeks of learning. Web development is so much fun and I am happy that I have finally started on this journey.😄🙌🏽
+I feel very proud of this accomplishment after just 2 weeks of learning. Web development is so much fun and I am happy that I have finally started on this journey.😄🙌🏽👻
