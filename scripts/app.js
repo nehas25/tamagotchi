@@ -88,10 +88,10 @@ class Game {
     
     handleScoreChange(propertyName, changeAmount) {
         this.pet[propertyName] += changeAmount;
+        this.updateScore(propertyName);
         if(this.pet[propertyName] < 1) {
             this.pet[propertyName] = 1;
         }
-        this.updateScore(propertyName);
         if(this.pet[propertyName] === 8 || this.pet[propertyName] === 9) {
             this.triggerScoreAnimation(propertyName);
         }
@@ -119,9 +119,7 @@ class Game {
     }
 
     triggerScoreAnimation(propertyName) {  
-        console.log(`#${propertyName}-val-label`);      
         let $label = $(`#${propertyName}-val-label`);
-        console.log("score = " + this.pet[propertyName] + " Triggered shake for ", $label.text);
         $label.addClass('flashit');
     }
     
@@ -173,6 +171,7 @@ class Game {
     }
     
     handleGameOver() {
+        console.log('Called handleGameOver()')
         this.disableAllButtons();
         this.updateCommentary(this.constructGameOverMessage());
         this.triggerAnimation('dead');
@@ -262,16 +261,10 @@ window.addEventListener("load", function(){
     }
 });
 
-document.getElementById('hunger-val-label').onanimationend = () => {
-    console.log('Transitionend triggered');
-    $('#hunger-val-label').removeClass('flashit');
-}
-document.getElementById('sleepiness-val-label').onanimationend = () => {
-    console.log('Transitionend triggered');
-    $('#sleepiness-val-label').removeClass('flashit');
-}
-document.getElementById('boredom-val-label').onanimationend = () => {
-    console.log('Transitionend triggered');
-    $('#boredom-val-label').removeClass('flashit');
-}
+document.querySelectorAll('.value-label').forEach(label => {
+  label.addEventListener('animationend', event => {
+    label.classList.remove('flashit');
+  })
+})
+
 
