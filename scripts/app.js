@@ -158,8 +158,22 @@ class Game {
         this.startTimer(propertyName);
     }
     
-    disableAllButtons() {
-        $('.game-play-btn').attr('disabled', true);
+    handleGameoverButtons() {
+        //Create a new Restart button
+        let $gameOverBtn = $('<button/>', {
+            id: 'reload-button',
+            class: 'game-play-btn',
+            text: 'Restart',
+            css: {
+                'background-color': 'black'
+            }
+        });
+
+        let $btnsSection = $('#buttons-section');
+        //Remove existing game play buttons
+        $btnsSection.empty();
+        //Replace with Restart button
+        $btnsSection.prepend($gameOverBtn);
     }
     
     constructGameOverMessage() {
@@ -171,10 +185,9 @@ class Game {
     }
     
     handleGameOver() {
-        console.log('Called handleGameOver()')
-        this.disableAllButtons();
-        this.updateCommentary(this.constructGameOverMessage());
         this.triggerAnimation('dead');
+        this.handleGameoverButtons();
+        this.updateCommentary(this.constructGameOverMessage());
         //Stop all timers
         for(const property of propertiesArr) {
             this.stopTimer(property);
@@ -267,4 +280,7 @@ document.querySelectorAll('.value-label').forEach(label => {
   })
 })
 
+$('#buttons-section').on('click', '#reload-button', function() {
+    location.reload();
+});
 
