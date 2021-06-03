@@ -4,8 +4,8 @@ const hunger = 'hunger';
 const sleepiness = 'sleepiness';
 const boredom = 'boredom';
 const age = 'age';
-const interval = 5000;
-const ageInterval = 5000;
+const interval = 7000;
+const ageInterval = 15000;
 const propertiesArr = [hunger, sleepiness, boredom, age];
 let petObj = {}; //global object to store pet
 let game = {};
@@ -256,19 +256,19 @@ function typewriterEffectAnimation(content, parentElement) {
 }
 
 window.addEventListener("load", function(){
-    if (window.location.pathname === '/pages/game.html') {
+    if (window.location.pathname.endsWith('/pages/game.html')) {
         console.log("Game loaded!");
         petObj = new Pet(getItem(petNameKey));
         game = new Game(petObj);
         game.initialize();
     }
 
-    if (window.location.pathname === '/index.html') {
-        var content = `It was a magical night. You were on one of your usual midnight walks in the cemetery. You hear a sound "Let me out! Let me out!". You look around find a coffin. That's where the sound is coming from! As you get close to it, it starts to shake. You open it.`;
+    if (window.location.pathname === '/index.html' || window.location.pathname.endsWith('/tamagotchi/')) {
+        var content = `It was a magical night. You were on one of your usual midnight walks in the cemetery. You hear a sound "Let me out! Let me out!". You look around and find a coffin. That's where the sound is coming from! As you get close to it, it starts to shake. You open it.`;
         typewriterEffectAnimation(content, 'p');
     }
     
-    if (window.location.pathname === '/pages/name-form.html') {
+    if (window.location.pathname.endsWith('/pages/name-form.html')) {
         var content = `Out comes a baby ghost!`;
         typewriterEffectAnimation(content, '#para');
     }
